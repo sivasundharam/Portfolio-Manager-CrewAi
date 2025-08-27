@@ -1,0 +1,18 @@
+AnalyzePortfolioTask:
+  description: >
+    Analyze the user's investment portfolio and provide insights. 
+    The portfolio is provided in JSON format, containing details about various assets.
+    Each holding has the following attributes:
+    - ticker: Stock symbol.
+    - quantity: Number of shares held.
+    - purchase_price: Price at which the shares were bought.
+    - current_price: Current market price of the shares.
+    Here is the portfolio:
+    {portfolio_json}
+  expected_output: >
+    1. Summary of portfolio performance.
+    2. Risk assessment and diversification analysis.
+    3. Recommendations for asset allocation based on user goals and risk tolerance.
+    4. Insights on current market trends affecting the portfolio.
+    5. Explanation of complex financial concepts relevant to the user's investments.
+    6. A JSON object with a single key: "analysis_report".

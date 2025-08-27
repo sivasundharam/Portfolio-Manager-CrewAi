@@ -1,0 +1,30 @@
+{
+  "owner": "John Doe",
+  "date": "2025-08-23",
+  "holdings": [
+    {
+      "ticker": "AAPL",
+      "quantity": 50,
+      "purchase_price": 150.00,
+      "current_price": 175.20
+    },
+    {
+      "ticker": "TSLA",
+      "quantity": 20,
+      "purchase_price": 600.00,
+      "current_price": 680.50
+    },
+    {
+      "ticker": "GOOGL",
+      "quantity": 10,
+      "purchase_price": 2800.00,
+      "current_price": 2950.00
+    },
+    {
+      "ticker": "MSFT",
+      "quantity": 30,
+      "purchase_price": 320.00,
+      "current_price": 340.00
+    }
+  ]
+}
