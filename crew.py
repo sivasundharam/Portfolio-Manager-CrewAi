@@ -4,8 +4,11 @@ from crewai.agents.agent_builder.base_agent import BaseAgent
 from typing import List, Optional
 from langsmith import traceable
 from eval import EvalListener
+from tools import FinanceTools
 
 EvalListener()  # Initialize the evaluation listener
+
+tools = FinanceTools()
 
 @CrewBase
 class PortfolioManager():
@@ -14,7 +17,7 @@ class PortfolioManager():
     """
     agent: List[BaseAgent]
     task: List[Task]
-    
+
     @traceable(run_type="chain")
     @agent
     def analyze_portfolio(self) -> Agent:
@@ -24,7 +27,8 @@ class PortfolioManager():
         return Agent(
             config = self.agents_config["PortfolioAnalyzer"],
             verbose=True,
-            memory=True
+            memory=True,
+            tools=[tools.stock_price_tool, tools.portfolio_analysis_tool],
          )
     
     @traceable(run_type="chain")
@@ -40,7 +44,7 @@ class PortfolioManager():
             agent=self.analyze_portfolio(),
             config = self.tasks_config["AnalyzePortfolioTask"],
             input_variables=["portfolio"],
-            output_variables=["analysis_report"]
+            output_variables=["analysis_report"],
         )
     
     @traceable(run_type="chain")
