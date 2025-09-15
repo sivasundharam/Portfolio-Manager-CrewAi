@@ -15,9 +15,16 @@ def run_portfolio_analysis():
     manager = PortfolioManager()
     crew = manager.portfolio_management_crew()
 
-    input_data = {"portfolio_json": portfolio}
+    # Extract tickers from portfolio for market analysis
+    portfolio_tickers = [holding['ticker'] for holding in portfolio['holdings']]
+    
+    input_data = {
+        "portfolio_json": portfolio,
+        "portfolio_tickers": portfolio_tickers
+    }
     result = crew.kickoff(input_data)
     
+    print("=== PORTFOLIO ANALYSIS ===")
     print(result)
 
 if __name__ == "__main__":

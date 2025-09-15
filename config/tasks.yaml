@@ -1,6 +1,6 @@
 AnalyzePortfolioTask:
   description: >
-    Analyze the user's investment portfolio and provide insights. 
+    Analyze the user's investment portfolio and provide comprehensive insights with market context. 
     The portfolio is provided in JSON format, containing details about various assets.
     Each holding has the following attributes:
     - ticker: Stock symbol.
@@ -9,10 +9,38 @@ AnalyzePortfolioTask:
     - current_price: Current market price of the shares.
     Here is the portfolio:
     {portfolio_json}
+    
+    Use real-time market data and news to enhance your analysis with:
+    - Current market sentiment and volatility indicators for portfolio holdings
+    - Recent news and events impacting the portfolio companies
+    - Sector-specific trends affecting portfolio holdings
+    - Technical analysis of key holdings
+    Portfolio holdings to analyze: {portfolio_tickers}
   expected_output: >
-    1. Summary of portfolio performance.
+    1. Summary of portfolio performance with current market context.
     2. Risk assessment and diversification analysis.
-    3. Recommendations for asset allocation based on user goals and risk tolerance.
-    4. Insights on current market trends affecting the portfolio.
-    5. Explanation of complex financial concepts relevant to the user's investments.
-    6. A JSON object with a single key: "analysis_report".
+    3. Recommendations for asset allocation based on user goals, risk tolerance, and current market conditions.
+    4. Market insights and trends affecting specific portfolio holdings.
+    5. Recent news impact analysis on portfolio companies.
+    6. Technical analysis of key portfolio holdings.
+    7. Explanation of complex financial concepts relevant to the user's investments.
+    8. A JSON object with a single key: "analysis_report".
+
+AnalyzeMarketTrendsTask:
+  description: >
+    Analyze current market trends, news sentiment, and market conditions that could impact 
+    the portfolio holdings. Use real-time market data and news to provide comprehensive 
+    market analysis including:
+    - Current market sentiment and volatility indicators
+    - Sector-specific trends affecting portfolio holdings
+    - Recent news and events impacting the market
+    - Technical analysis of key market indicators
+    - Economic indicators and their potential impact
+    Portfolio holdings to analyze: {portfolio_tickers}
+  expected_output: >
+    1. Current market sentiment analysis with supporting data.
+    2. Sector-specific trend analysis for portfolio holdings.
+    3. Recent news summary and market impact assessment.
+    4. Technical analysis of key market indicators.
+    5. Economic indicators analysis and portfolio implications.
+    6. A JSON object with a single key: "market_analysis_report".

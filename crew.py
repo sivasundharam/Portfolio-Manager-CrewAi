@@ -8,7 +8,13 @@ from tools import FinanceTools
 
 EvalListener()  # Initialize the evaluation listener
 
+# Create tool instances
 tools = FinanceTools()
+portfolio_tool = tools.portfolio_analysis_tool
+stock_data_tool = tools.enhanced_stock_data_tool
+news_tool = tools.market_news_tool
+sentiment_tool = tools.market_sentiment_tool
+sector_tool = tools.sector_analysis_tool
 
 @CrewBase
 class PortfolioManager():
@@ -28,8 +34,42 @@ class PortfolioManager():
             config = self.agents_config["PortfolioAnalyzer"],
             verbose=True,
             memory=True,
-            tools=[tools.stock_price_tool, tools.portfolio_analysis_tool],
+            tools=[
+                portfolio_tool, 
+                stock_data_tool,
+                sector_tool
+            ],
          )
+    
+    @traceable(run_type="chain")
+    @agent
+    def analyze_market_trends(self) -> Agent:
+        """
+        Analyze market trends, news sentiment, and market conditions.
+        """
+        return Agent(
+            config = self.agents_config["MarketTrendAnalyzer"],
+            verbose=True,
+            memory=True,
+            tools=[news_tool, sentiment_tool, sector_tool],
+         )
+    
+    @traceable(run_type="chain")
+    @task
+    def analyze_market_trends_task(self) -> Task:
+        """
+        Task to analyze market trends and news sentiment.
+        Returns:
+            Task: A task that performs market trend analysis.
+        """
+        return Task(
+            name="AnalyzeMarketTrendsTask",
+            agent=self.analyze_market_trends(),
+            config = self.tasks_config["AnalyzeMarketTrendsTask"],
+            input_variables=["portfolio_tickers"],
+            output_variables=["market_analysis_report"],
+        )
+    
     
     @traceable(run_type="chain")
     @task
@@ -46,6 +86,7 @@ class PortfolioManager():
             input_variables=["portfolio"],
             output_variables=["analysis_report"],
         )
+
     
     @traceable(run_type="chain")
     @crew
