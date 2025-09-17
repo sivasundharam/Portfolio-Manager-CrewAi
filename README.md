@@ -8,7 +8,6 @@
 ### Overview
 An advanced AI-powered portfolio management system using CrewAI with multiple specialized agents, real-time market data integration, news analysis, and comprehensive evaluation capabilities.
 
-### Features
 
 #### Multi-Agent Architecture
 - **PortfolioAnalyzer**: Analyzes investment portfolios, assesses performance and risk
@@ -46,21 +45,11 @@ An advanced AI-powered portfolio management system using CrewAI with multiple sp
 
 ### API Integration
 
-#### News API (Optional)
+#### News API
 To enable news fetching features, get a free API key from [NewsAPI](https://newsapi.org/) and add it to your `.env` file.
 
 #### Stock Data
 Uses Yahoo Finance (yfinance) for real-time stock data - no API key required.
-
-### Evaluation & Phase Comparison
-
-The system includes a **future-proof evaluation framework** with LangSmith integration:
-
-#### **Future-Proof Design**
-- **No Phase-Specific Code**: Works for any phase without modification
-- **Automatic Capability Detection**: Detects what the system can do
-- **Comprehensive Metrics**: 11 evaluation categories covering all aspects
-- **LangSmith Integration**: Centralized storage and visualization
 
 #### **Evaluation Categories (11 Total)**
 - **Core Financial Analysis (40%)**: Performance, Risk, Recommendations, Concepts
@@ -110,29 +99,6 @@ The system provides comprehensive evaluation across 11 categories:
 #### **Advanced Capabilities (10%)**
 - **Multi-Agent Coordination**: How well agents work together
 - **Hallucination Control**: Factual accuracy and consistency
-
-### Future-Proof Benefits
-
-#### **Zero Maintenance for New Phases**
-- Add Phase 6, 7, 8+ without touching evaluation code
-- New capabilities automatically detected
-- Evaluation adapts to new features
-
-#### **Comprehensive Coverage**
-- Covers all aspects of portfolio analysis
-- Includes advanced AI capabilities
-- Tracks system performance metrics
-
-#### **LangSmith Integration**
-- Centralized storage and visualization
-- Team collaboration features
-- Historical analysis capabilities
-- Real-time monitoring
-
-#### **Scalable Design**
-- Handles any number of phases
-- Adapts to new technologies
-- Future-proof architecture
 
 ### Contributing
 
