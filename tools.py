@@ -79,7 +79,6 @@ class FinanceTools:
     def market_news_tool(ticker: str = None, limit: int = 10):
         """ Fetch recent financial news for a specific ticker or general market news. """
         try:
-            # Using NewsAPI (you'll need to set NEWS_API_KEY in your .env file)
             api_key = os.getenv("NEWS_API_KEY")
             if not api_key:
                 return "News API key not found. Please set NEWS_API_KEY in your environment variables."
@@ -141,18 +140,11 @@ class FinanceTools:
                 price_5d_ago = data['Close'].iloc[0]
                 momentum = ((latest_price - price_5d_ago) / price_5d_ago) * 100
                 
-                # Get recent news (simplified for sentiment analysis)
-                try:
-                    # Simple news count estimation based on ticker
-                    news_count = 3  # Placeholder - in real implementation, you'd call the news API
-                except:
-                    news_count = 0
                 
                 sentiment_item = {
                     "ticker": ticker,
                     "current_price": round(latest_price, 2),
                     "momentum_5d": round(momentum, 2),
-                    "recent_news_count": news_count,
                     "sentiment_score": "positive" if momentum > 2 else "negative" if momentum < -2 else "neutral"
                 }
                 sentiment_data.append(sentiment_item)

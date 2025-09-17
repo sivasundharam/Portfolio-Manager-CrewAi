@@ -64,7 +64,7 @@ async def run_portfolio_agent(inputs: dict, phase: str = "Phase-1") -> dict:
                 "timestamp": datetime.now().isoformat(),
                 "detected_capabilities": capabilities,
                 "execution_success": "Success",
-                "trace": trace  # 👈 include raw trace for debugging
+                "trace": trace
             }
         }
 
